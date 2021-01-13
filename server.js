@@ -20,6 +20,7 @@ app.use("/api/checkout", require("./routes/api/checkout"));
 app.use("/api/catalog", require("./routes/api/catalog"));
 app.use("/api/users", require("./routes/api/user"));
 app.use("/api/auth", require("./routes/api/auth"));
+app.use("/api/comments", require("./routes/api/comment"));
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`Server ${PORT}`));

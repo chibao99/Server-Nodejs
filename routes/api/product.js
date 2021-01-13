@@ -68,10 +68,10 @@ router.post(
         price,
         inventory,
         desc,
-        discount
+        discount,
       });
       await product.save();
-      res.json(product);
+      res.json({ msg: true });
     } catch (err) {
       console.error(err.message);
       res.status(500).send("Server error");
@@ -113,11 +113,12 @@ router.put(
   ],
   upload.single("image"),
   async (req, res) => {
-    const errors = validationResult(req);
+    const errors = validationResult(req.body);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
     const { name, price, inventory, desc } = req.body;
+
     const image =
       req.protocol + "://" + req.hostname + ":5000/" + req.file.path;
     const productFields = {};
